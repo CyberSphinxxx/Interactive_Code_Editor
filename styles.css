@@ -12,6 +12,51 @@ body {
     margin: 0;
 }
 
+header {
+    width: 100%;
+    background-color: #1e1e2e;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.header-content {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: #89b4fa;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+}
+
+.github-btn, .how-to-use-btn {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+    border: none;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.github-btn:hover, .how-to-use-btn:hover {
+    background-color: #b4befe;
+}
+
 .container {
     width: 90%;
     max-width: 1200px;
