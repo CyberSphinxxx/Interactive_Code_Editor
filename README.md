@@ -58,3 +58,13 @@ Make sure you have a modern web browser installed. No server or additional setup
 - `Start From Scratch:`Click the Start From Scratch button to start with a blank editor.
 - `Full-Screen Mode:`  Click the Full Screen button to toggle the preview into full-screen mode.
    
+## Contributing
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
+
+**If you want to contribute:**
+
+1. Fork the project.
+2. Create your feature branch: `git checkout -b feature/AmazingFeature`
+3. Commit your changes: `git commit -m 'Added some AmazingFeature'`
+4. Push to the branch: `git push origin feature/AmazingFeature`
+5. Open a pull request.
