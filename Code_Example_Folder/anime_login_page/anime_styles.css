@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
+
+body {
+    font-family: 'Fira Code', monospace;
+    background-color: #2b2b2b;
+    color: #cdd6f4;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    background-color: #1e1e2e;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.header-content {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: #89b4fa;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+}
+
+.github-btn, .how-to-use-btn {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+    border: none;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.github-btn:hover, .how-to-use-btn:hover {
+    background-color: #b4befe;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    color: red;
+    margin-bottom: 5px;
+}
+
+.tab-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.tab {
+    background-color: #45475a;
+    color: #cdd6f4;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.tab.active {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+}
+
+.tab-close {
+    margin-left: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.editor-container {
+    display: flex;
+    width: 100%;
+    height: 600px;
+    margin-bottom: 20px;
+}
+
+#editor {
+    flex: 1;
+    height: 100%;
+}
+
+#preview {
+    flex: 1;
+    height: 100%;
+    background-color: #ffffff;
+    border: 1px solid #45475a;
+    border-radius: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+button {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin: 5px 10px;
+}
+
+button:hover {
+    background-color: #b4befe;
+}
+
+#addTabBtn {
+    background-color: #a6e3a1;
+}
+
+#addTabBtn:hover {
+    background-color: #94e2d5;
+}
+
+#startOverBtn, #startFromScratchBtn {
+    background-color: #f38ba8;
+}
+
+#startOverBtn:hover, #startFromScratchBtn:hover {
+    background-color: #eba0ac;
+}
+
+#fullScreenBtn {
+    background-color: #fab387;
+}
+
+#fullScreenBtn:hover {
+    background-color: #f9e2af;
+}
+
+.fullscreen-preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+}
+
+#creator_name_link {
+    text-decoration: none;
+    color: white;
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+#creator_name_link:hover {
+    background-color: #005abb;
+}

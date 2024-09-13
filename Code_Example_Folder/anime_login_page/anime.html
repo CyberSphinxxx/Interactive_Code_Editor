@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Code Editor</title>
+    <link rel="stylesheet" href="/Code_Example_Folder/anime_login_page/anime_styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+
+</head>
+
+<body>
+
+    <header>
+    <div class="header-content">
+        <h1>Interactive Code Editor</h1>
+        <nav>
+            <a href="https://github.com/CyberSphinxxx/Interactive_Code_Editor" class="github-btn" target="_blank">GitHub Repo</a>
+            <a href="/How_To_Use_Folder/how_to_use.html" class="how-to-use-btn">How to Use</a>
+            <a href="/Code_Example_Folder/code_examples.html" class="how-to-use-btn">Code Examples</a>
+        </nav>
+    </div>
+</header>
+
+    <div class="container">
+        <h1>
+            HTML, CSS & JavaScript Editor
+        </h1>
+
+        <a href="https://github.com/CyberSphinxxx" id="creator_name_link" target="_blank">
+            <p id="creator_name" style="margin: 0;">
+                By: John Lemar L. Gonzales
+            </p>
+        </a>
+
+        <div class="tab-container" id="tabContainer">
+            <button class="tab active" data-tab="1">
+                Tab 1 
+                <span class="tab-close">&times;</span>
+            </button>
+            
+            <button id="addTabBtn">+</button>
+        </div>
+
+        <div class="editor-container">
+            <div id="editor"></div>
+            <iframe id="preview"></iframe>
+        </div>
+
+        <div class="button-container">
+            <button id="runBtn">Run Code</button>
+            <button id="startOverBtn">Start Over</button>
+            <button id="startFromScratchBtn">Start From Scratch</button>
+            <button id="fullScreenBtn">Full Screen</button>
+        </div>
+    </div>
+
+    <script src="/Code_Example_Folder/anime_login_page/anime_script.js"></script>
+
+</body>
+</html>
