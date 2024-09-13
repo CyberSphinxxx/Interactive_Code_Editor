@@ -180,3 +180,17 @@ button:hover {
     height: 100vh;
     z-index: 9999;
 }
+
+#creator_name_link {
+    text-decoration: none;
+    color: white;
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+#creator_name_link:hover {
+    background-color: #005abb;
+}
