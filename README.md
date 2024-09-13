@@ -20,3 +20,33 @@ This project contains three main files:
 1. `index.html`: The main HTML file that contains the structure of the code editor.
 2. `styles.css`: The CSS file responsible for styling the editor, buttons, and layout.
 3. `script.js`: The JavaScript file that manages the functionality of the code editor, such as adding tabs, running code, and handling full-screen toggling.
+
+## Getting Started
+
+To run the project locally, follow these steps:
+
+### Prerequisites
+
+Make sure you have a modern web browser installed. No server or additional setup is required.
+
+### Steps
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/interactive-code-editor.git
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd interactive-code-editor
+   ```
+
+3. Open the index.html file in your browser:
+   ```bash
+   open index.html
+   ```
+   or simply drag the index.html file into a web browser window.
+
+   
+   
