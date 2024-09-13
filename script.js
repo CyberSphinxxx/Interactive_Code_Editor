@@ -7,6 +7,7 @@ editor.setOptions({
     highlightActiveLine: false
 });
 
+// ---------------------------------------------------------------------------
 let initialContent =
 `<!DOCTYPE html>
 <html lang="en">
@@ -75,6 +76,8 @@ let initialContent =
 </body>
 </html>`;
 
+// ---------------------------------------------------------------------------
+
 let tabs = [{
     id: 1,
     content: initialContent
@@ -90,12 +93,12 @@ let startFromScratchBtn = document.getElementById('startFromScratchBtn');
 let fullScreenBtn       = document.getElementById('fullScreenBtn');
 let tabContainer        = document.getElementById('tabContainer');
 
-runBtn.addEventListener('click', runCode);
-addTabBtn.addEventListener('click', addNewTab);
-startOverBtn.addEventListener('click', startOver);
+runBtn.addEventListener             ('click', runCode);
+addTabBtn.addEventListener          ('click', addNewTab);
+startOverBtn.addEventListener       ('click', startOver);
 startFromScratchBtn.addEventListener('click', startFromScratch);
-fullScreenBtn.addEventListener('click', toggleFullScreen);
-tabContainer.addEventListener('click', handleTabClick);
+fullScreenBtn.addEventListener      ('click', toggleFullScreen);
+tabContainer.addEventListener       ('click', handleTabClick);
 
 function runCode() {
     let code = editor.getValue();
