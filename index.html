@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Code Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Interactive Code Editor</h1>
+        <p>By: John Lemar L. Gonzales</p>
+        <div class="tab-container" id="tabContainer">
+            <button class="tab active" data-tab="1">Tab 1 <span class="tab-close">&times;</span></button>
+            <button id="addTabBtn">+</button>
+        </div>
+
+        <div class="editor-container">
+            <div id="editor"></div>
+            <iframe id="preview"></iframe>
+        </div>
+
+        <div class="button-container">
+            <button id="runBtn">Run Code</button>
+            <button id="startOverBtn">Start Over</button>
+            <button id="startFromScratchBtn">Start From Scratch</button>
+            <button id="fullScreenBtn">Full Screen</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
