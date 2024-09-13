@@ -1,3 +1,7 @@
+## NOTE: THIS PROJECT IS STILL ON GOING AND YOU MAY ENCOUNTER SOME BUGS
+### If you find some bugs, kindy report it on the issue tab above :)
+-----------
+
 ## Interactive Code Editor
 
 - This project is a simple **interactive code editor** with multiple tab functionality.
