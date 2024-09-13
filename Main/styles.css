@@ -181,6 +181,14 @@ button:hover {
     z-index: 9999;
 }
 
+#downloadBtn {
+    background-color: #fab387;
+}
+
+#downloadBtn:hover {
+    background-color: #f9e2af;
+}
+
 #creator_name_link {
     text-decoration: none;
     color: white;

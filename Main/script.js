@@ -92,6 +92,7 @@ let startOverBtn        = document.getElementById('startOverBtn');
 let startFromScratchBtn = document.getElementById('startFromScratchBtn');
 let fullScreenBtn       = document.getElementById('fullScreenBtn');
 let tabContainer        = document.getElementById('tabContainer');
+let downloadBtn         = document.getElementById('downloadBtn');
 
 runBtn.addEventListener             ('click', runCode);
 addTabBtn.addEventListener          ('click', addNewTab);
@@ -99,6 +100,7 @@ startOverBtn.addEventListener       ('click', startOver);
 startFromScratchBtn.addEventListener('click', startFromScratch);
 fullScreenBtn.addEventListener      ('click', toggleFullScreen);
 tabContainer.addEventListener       ('click', handleTabClick);
+downloadBtn.addEventListener        ('click', downloadCode);
 
 function runCode() {
     let code = editor.getValue();
@@ -210,6 +212,16 @@ function toggleFullScreen() {
             document.exitFullscreen();
         }
     }
+}
+
+function downloadCode() {
+    let code = editor.getValue();
+    let blob = new Blob([code], { type: 'text/html' });
+    let link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'your_code.html';
+    link.click();
+    URL.revokeObjectURL(link.href);
 }
 
 document.addEventListener('fullscreenchange', () => {
