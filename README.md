@@ -12,3 +12,11 @@
 - **Start Over / Start from Scratch:** Reset your code or start with a blank template.
 - **Full-Screen Mode:** Switch to full-screen mode for a better preview.
 - **ACE Code Editor:** Uses the ACE editor for easy code editing and highlighting.
+
+## Project Structure
+
+This project contains three main files:
+
+1. `index.html`: The main HTML file that contains the structure of the code editor.
+2. `styles.css`: The CSS file responsible for styling the editor, buttons, and layout.
+3. `script.js`: The JavaScript file that manages the functionality of the code editor, such as adding tabs, running code, and handling full-screen toggling.
