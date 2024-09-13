@@ -48,5 +48,13 @@ Make sure you have a modern web browser installed. No server or additional setup
    ```
    or simply drag the index.html file into a web browser window.
 
-   
+## Usage
+
+- `Write HTML Code:`   In the code editor, write your HTML, CSS, and JavaScript code.
+- `Run the Code:`      Click the Run Code button to see the output rendered in the preview pane.
+- `Add New Tabs:`      Click the + button to add new tabs.
+- `Remove Tabs:`       Click the × icon next to each tab to remove it.
+- `Start Over:`        Click the Start Over button to reset the editor with default content.
+- `Start From Scratch:`Click the Start From Scratch button to start with a blank editor.
+- `Full-Screen Mode:`  Click the Full Screen button to toggle the preview into full-screen mode.
    
