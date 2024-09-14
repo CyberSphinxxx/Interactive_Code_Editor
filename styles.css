@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Fira Code', monospace;
-    background-color: #2b2b2b;
+    background-color: #ffffff;
     color: #cdd6f4;
     padding: 0;
     display: flex;
@@ -43,20 +43,23 @@ nav {
     gap: 10px;
 }
 
-.github-btn, .how-to-use-btn {
+.github-btn, .how-to-use-btn, button {
     background-color: #89b4fa;
     color: #1e1e2e;
     border: none;
-    padding: 10px 15px;
+    padding: 15px 15px;
     text-decoration: none;
     border-radius: 5px;
     font-size: 16px;
     font-weight: bold;
     transition: background-color 0.3s ease;
+    text-align: center;
+    display: inline-block;
+    min-width: 10px;
 }
-
 .github-btn:hover, .how-to-use-btn:hover {
     background-color: #b4befe;
+    color: #1e1e2e;
 }
 
 .container {
@@ -125,25 +128,15 @@ h1 {
     border-radius: 5px;
 }
 
-.button-container {
+.button-container{
     display: flex;
     justify-content: center;
     width: 100%;
     margin-bottom: 20px;
-    flex-wrap: wrap;
-}
-
-button {
-    background-color: #89b4fa;
-    color: #1e1e2e;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    margin: 5px 10px;
+    flex-wrap: nowrap;
+    margin: 10px;
+    gap: 20px;
+    flex-shrink: 0;
 }
 
 button:hover {
@@ -194,7 +187,7 @@ button:hover {
 #creator_name_link {
     text-decoration: none;
     color: white;
-    background-color: #4CAF50;
+    background-color: #424242;
     padding: 10px 20px;
     border-radius: 5px;
     display: inline-block;
@@ -203,4 +196,22 @@ button:hover {
 
 #creator_name_link:hover {
     background-color: #005abb;
+}
+
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.dark-mode button, .dark-mode a {
+    color: #ffffff;
+}
+
+.dark-mode .github-btn, .dark-mode .how-to-use-btn {
+    background-color: #44475a;
+    color: #ffffff;
+}
+
+.dark-mode .github-btn:hover, .dark-mode .how-to-use-btn:hover {
+    background-color: #6272a4;
 }

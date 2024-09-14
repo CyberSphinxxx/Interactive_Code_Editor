@@ -224,6 +224,31 @@ function downloadCode() {
     URL.revokeObjectURL(link.href);
 }
 
+function myFunction() {
+    let element = document.body;
+    element.classList.toggle("dark");
+}
+
+// Toggle Dark Mode
+const toggleDarkMode = () => {
+    document.body.classList.toggle('dark-mode');
+
+    // Save user preference to localStorage
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+};
+
+// Check saved preference on page load
+window.addEventListener('DOMContentLoaded', () => {
+    const darkModePreference = localStorage.getItem('darkMode');
+    if (darkModePreference === 'enabled') {
+        document.body.classList.add('dark-mode');
+    }
+});
+
+// Add event listener to toggle button
+document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
+
 document.addEventListener('fullscreenchange', () => {
     if (!document.fullscreenElement) {
         preview.classList.remove('fullscreen-preview');
