@@ -9,7 +9,11 @@ editor.setOptions({
 
 // ---------------------------------------------------------------------------
 let initialContent =
-`<!DOCTYPE html>
+`<!-- This is an example -->
+<!-- You can freely modify this code -->
+<!-- Or create your own -->
+<!-- By pressing the "+" icon -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
