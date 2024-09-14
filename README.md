@@ -1,5 +1,5 @@
 ## NOTE: THIS PROJECT IS STILL ON GOING AND YOU MAY ENCOUNTER SOME BUGS
-### If you find some bugs, kindy report it on the issue tab above :)
+### If you find any bugs in the code, kindy report it on the issue tab above :)
 -----------
 
 ## Interactive Code Editor
