@@ -214,6 +214,47 @@ function toggleFullScreen() {
     }
 }
 
+let focusModeBtn = document.getElementById('focusModeBtn');
+let body = document.body;
+
+focusModeBtn.addEventListener('click', toggleFocusMode);
+
+function toggleFocusMode() {
+    body.classList.toggle('focus-mode');
+    editor.resize();
+}
+
+let isFullFocus = false;
+
+focusModeBtn.addEventListener('click', () => {
+    isFullFocus = !isFullFocus;
+
+    if (isFullFocus) {
+        enterFullFocusMode();
+        focusModeBtn.innerText = 'Exit Full Focus Mode';
+    } else {
+        exitFullFocusMode();
+        focusModeBtn.innerText = 'Full Focus Mode';
+    }
+});
+
+function enterFullFocusMode() {
+    document.getElementById('header')   .style.display = 'none';
+    document.getElementById('titles')   .style.display = 'none';  
+    document.getElementById('controls') .style.display = 'block';
+    document.getElementById('editor')   .style.height  = '100vh';
+    document.getElementById('preview')  .style.height  = '100vh';
+}
+
+function exitFullFocusMode() {
+
+    document.getElementById('header') .style.display = 'block'; 
+    document.getElementById('titles') .style.display = 'block'; 
+    document.getElementById('editor') .style.height  = ''; 
+    document.getElementById('preview').style.height  = ''; 
+}
+
+
 function downloadCode() {
     let code  = editor.getValue();
     let blob  = new Blob([code], { type: 'text/html' });
@@ -229,16 +270,13 @@ function myFunction() {
     element.classList.toggle("dark");
 }
 
-// Toggle Dark Mode
 const toggleDarkMode = () => {
     document.body.classList.toggle('dark-mode');
 
-    // Save user preference to localStorage
     const isDarkMode = document.body.classList.contains('dark-mode');
     localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
 };
 
-// Check saved preference on page load
 window.addEventListener('DOMContentLoaded', () => {
     const darkModePreference = localStorage.getItem('darkMode');
     if (darkModePreference === 'enabled') {
@@ -246,7 +284,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Add event listener to toggle button
 document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
 
 document.addEventListener('fullscreenchange', () => {
