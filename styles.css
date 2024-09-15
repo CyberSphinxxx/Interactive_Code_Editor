@@ -246,3 +246,28 @@ body.dark-mode {
 .focus-mode #preview {
     height: 100vh;
 }
+
+.theme-picker {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#bgColorPicker {
+    padding: 0.5px;
+}
+
+#resetColorBtn {
+    padding: 5px 10px;
+    background-color: #89b4fa;
+    color: #1e1e2e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#resetColorBtn:hover {
+    background-color: #b4befe;
+}

@@ -296,5 +296,29 @@ document.addEventListener('fullscreenchange', () => {
     }
 });
 
+const bgColorPicker = document.getElementById('bgColorPicker');
+const resetColorBtn = document.getElementById('resetColorBtn');
+
+window.addEventListener('DOMContentLoaded', () => {
+    const savedColor = localStorage.getItem('backgroundColor');
+    if (savedColor) {
+        document.body.style.backgroundColor = savedColor;
+        bgColorPicker.value = savedColor;
+    }
+});
+
+bgColorPicker.addEventListener('input', (event) => {
+    const color = event.target.value;
+    document.body.style.backgroundColor = color;
+    localStorage.setItem('backgroundColor', color); 
+});
+
+// Reset button functionality
+resetColorBtn.addEventListener('click', () => {
+    document.body.style.backgroundColor = '';
+    localStorage.removeItem('backgroundColor');
+});
+
+
 editor.setValue(tabs[0].content, -1);
 runCode();
