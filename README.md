@@ -16,6 +16,7 @@
 - **Start Over / Start from Scratch:** Reset your code or start with a blank template.
 - **Full-Screen Mode:** Switch to full-screen mode for a better preview.
 - **ACE Code Editor:** Uses the ACE editor for easy code editing and highlighting.
+- **Custom Background Color:** You can select your own background color.
 
 ## Project Structure
 
