@@ -1,5 +1,7 @@
+/* Importing Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
 
+/* Basic body styling */
 body {
     font-family: 'Fira Code', monospace;
     background-color: #ffffff;
@@ -11,20 +13,20 @@ body {
     margin: 0;
 }
 
+/* Header styling */
 header {
     width: 100%;
     background-color: #1e1e2e;
     padding: 15px 0;
     display: flex;
     justify-content: center;
-    align-items: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     position: sticky;
     top: 0;
     z-index: 1000;
-    margin: 0;
 }
 
+/* Header content */
 .header-content {
     width: 90%;
     max-width: 1200px;
@@ -38,6 +40,7 @@ header h1 {
     margin: 0;
 }
 
+/* Navigation styling */
 nav {
     display: flex;
     gap: 10px;
@@ -47,21 +50,20 @@ nav {
     background-color: #89b4fa;
     color: #1e1e2e;
     border: none;
-    padding: 15px 15px;
+    padding: 15px;
     text-decoration: none;
     border-radius: 5px;
     font-size: 16px;
     font-weight: bold;
     transition: background-color 0.3s ease;
     text-align: center;
-    display: inline-block;
-    min-width: 10px;
-}
-.github-btn:hover, .how-to-use-btn:hover {
-    background-color: #b4befe;
-    color: #1e1e2e;
 }
 
+.github-btn:hover, .how-to-use-btn:hover, button:hover {
+    background-color: #b4befe;
+}
+
+/* Main container styling */
 .container {
     width: 90%;
     max-width: 100%;
@@ -76,11 +78,12 @@ h1 {
     margin-bottom: 5px;
 }
 
+/* Tab container */
 .tab-container {
     display: flex;
     justify-content: flex-start;
     width: 100%;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     flex-wrap: wrap;
 }
 
@@ -92,9 +95,6 @@ h1 {
     cursor: pointer;
     border-radius: 5px 5px 0 0;
     margin-right: 5px;
-    margin-bottom: 0px;
-    display: flex;
-    align-items: center;
 }
 
 .tab.active {
@@ -108,6 +108,7 @@ h1 {
     cursor: pointer;
 }
 
+/* Code editor and preview container */
 .editor-container {
     display: flex;
     width: 100%;
@@ -115,34 +116,26 @@ h1 {
     margin-bottom: 20px;
 }
 
-#editor {
-    flex: 1;
-    height: 100%;
-}
+/* Main Code Editor and Preview */
 
-#preview {
+#editor, #preview {
     flex: 1;
     height: 100%;
-    background-color: #ffffff;
     border: 1px solid #45475a;
     border-radius: 5px;
+    transition: height 0.3s ease;
 }
 
-.button-container{
+/* Button container */
+.button-container {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-bottom: 20px;
-    flex-wrap: nowrap;
-    margin: 10px;
+    margin: 10px 0 20px;
     gap: 20px;
-    flex-shrink: 0;
 }
 
-button:hover {
-    background-color: #b4befe;
-}
-
+/* Specific button styles */
 #addTabBtn {
     background-color: #a6e3a1;
 }
@@ -159,31 +152,15 @@ button:hover {
     background-color: #eba0ac;
 }
 
-#fullScreenBtn {
+#fullScreenBtn, #downloadBtn {
     background-color: #fab387;
 }
 
-#fullScreenBtn:hover {
+#fullScreenBtn:hover, #downloadBtn:hover {
     background-color: #f9e2af;
 }
 
-.fullscreen-preview {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999;
-}
-
-#downloadBtn {
-    background-color: #fab387;
-}
-
-#downloadBtn:hover {
-    background-color: #f9e2af;
-}
-
+/* My name link button */
 #creator_name_link {
     font-size: 10px;
     text-decoration: none;
@@ -199,6 +176,7 @@ button:hover {
     background-color: #005abb;
 }
 
+/* Dark mode styling */
 body.dark-mode {
     background-color: #1e1e1e;
     color: #ffffff;
@@ -210,26 +188,24 @@ body.dark-mode {
 
 .dark-mode .github-btn, .dark-mode .how-to-use-btn {
     background-color: #44475a;
-    color: #ffffff;
 }
 
 .dark-mode .github-btn:hover, .dark-mode .how-to-use-btn:hover {
     background-color: #6272a4;
 }
 
-#controls {
-    display: flex;
-    gap: 10px;
+/* Full-screen preview styling */
+.fullscreen-preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
 }
 
-#editor, #preview {
-    transition: height 0.3s ease; /* Smooth transition when switching modes */
-}
-
-.focus-mode header,
-.focus-mode h1,
-.focus-mode #creator_name_link,
-.focus-mode .tab-container {
+/* Focus mode styling */
+.focus-mode header, .focus-mode h1, .focus-mode #creator_name_link, .focus-mode .tab-container {
     display: none;
 }
 
@@ -239,14 +215,11 @@ body.dark-mode {
     margin: 0;
 }
 
-.focus-mode #editor {
+.focus-mode #editor, .focus-mode #preview {
     height: 100vh;
 }
 
-.focus-mode #preview {
-    height: 100vh;
-}
-
+/* Background Color Picker */
 .theme-picker {
     margin: 20px;
     display: flex;

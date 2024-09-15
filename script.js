@@ -2,7 +2,7 @@ let editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/html");
 editor.setOptions({
-    fontSize: "14pt",
+    fontSize: "10pt",
     showPrintMargin: false,
     highlightActiveLine: false
 });
@@ -82,243 +82,216 @@ let initialContent =
 
 // ---------------------------------------------------------------------------
 
-let tabs = [{
-    id: 1,
-    content: initialContent
-}];
-
+let tabs = [{ id: 1, content: initialContent }];
 let currentTab = 1;
 
-let preview             = document.getElementById('preview');
-let runBtn              = document.getElementById('runBtn');
-let addTabBtn           = document.getElementById('addTabBtn');
-let startOverBtn        = document.getElementById('startOverBtn');
-let startFromScratchBtn = document.getElementById('startFromScratchBtn');
-let fullScreenBtn       = document.getElementById('fullScreenBtn');
-let tabContainer        = document.getElementById('tabContainer');
-let downloadBtn         = document.getElementById('downloadBtn');
+const preview = document.getElementById('preview');
+const runBtn = document.getElementById('runBtn');
+const addTabBtn = document.getElementById('addTabBtn');
+const startOverBtn = document.getElementById('startOverBtn');
+const startFromScratchBtn = document.getElementById('startFromScratchBtn');
+const fullScreenBtn = document.getElementById('fullScreenBtn');
+const tabContainer = document.getElementById('tabContainer');
+const downloadBtn = document.getElementById('downloadBtn');
+const focusModeBtn = document.getElementById('focusModeBtn');
+const darkModeToggle = document.getElementById('darkModeToggle');
+const bgColorPicker = document.getElementById('bgColorPicker');
+const resetColorBtn = document.getElementById('resetColorBtn');
 
-runBtn.addEventListener                 ('click', runCode);
-addTabBtn.addEventListener              ('click', addNewTab);
-startOverBtn.addEventListener           ('click', startOver);
-startFromScratchBtn.addEventListener    ('click', startFromScratch);
-fullScreenBtn.addEventListener          ('click', toggleFullScreen);
-tabContainer.addEventListener           ('click', handleTabClick);
-downloadBtn.addEventListener            ('click', downloadCode);
-
+// Function to run the code
 function runCode() {
-    let code = editor.getValue();
-    preview.srcdoc = code;
+    preview.srcdoc = editor.getValue();
 }
 
-function addNewTab() {
-    let newTabId = tabs.length + 1;
-    tabs.push({
-        id: newTabId,
-        content: `<!-- Tab ${newTabId} Content -->`
-    });
-
-    let newTab = document.createElement('button');
-    newTab.className    = 'tab';
-    newTab.innerHTML    = `Tab ${newTabId} <span class="tab-close">&times;</span>`;
-    newTab.dataset.tab  = newTabId;
-
-    tabContainer.insertBefore(newTab, addTabBtn);
-    switchToTab(newTabId);
-}
-
-function handleTabClick(event) {
-    if (event.target.classList.contains('tab')) {
-        switchToTab(parseInt(event.target.dataset.tab));
-    }
-    
-    else if (event.target.classList.contains('tab-close')) {
-        closeTab(event.target.parentElement);
-    }
-}
-
+// Switch tab and save content of the previous tab
 function switchToTab(tabId) {
     tabs[currentTab - 1].content = editor.getValue();
     currentTab = tabId;
-
-    document.querySelectorAll('.tab').forEach(tab => {
-        tab.classList.remove('active');
-        if (parseInt(tab.dataset.tab) === currentTab) {
-            tab.classList.add('active');
-        }
-    });
-
+    updateTabsUI();
     editor.setValue(tabs[currentTab - 1].content, -1);
     runCode();
 }
 
+// Update the tab UI to mark the active tab
+function updateTabsUI() {
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.toggle('active', parseInt(tab.dataset.tab) === currentTab);
+    });
+}
+
+// Add a new tab
+function addNewTab() {
+    const newTabId = tabs.length + 1;
+    tabs.push({ id: newTabId, content: `<!-- Tab ${newTabId} Content -->` });
+    const newTab = createTabElement(newTabId);
+    tabContainer.insertBefore(newTab, addTabBtn);
+    switchToTab(newTabId);
+}
+
+// Create a new tab element
+function createTabElement(tabId) {
+    const newTab = document.createElement('button');
+    newTab.className = 'tab';
+    newTab.dataset.tab = tabId;
+    newTab.innerHTML = `Tab ${tabId} <span class="tab-close">&times;</span>`;
+    return newTab;
+}
+
+// Handle tab click and close events
+function handleTabClick(event) {
+    const tabElement = event.target.closest('.tab');
+    if (tabElement) {
+        if (event.target.classList.contains('tab-close')) {
+            closeTab(tabElement);
+        } else {
+            switchToTab(parseInt(tabElement.dataset.tab));
+        }
+    }
+}
+
+// Close a tab
 function closeTab(tabElement) {
-    let tabId = parseInt(tabElement.dataset.tab);
+    const tabId = parseInt(tabElement.dataset.tab);
     if (tabs.length > 1) {
         tabs = tabs.filter(tab => tab.id !== tabId);
         tabElement.remove();
-
-        if (currentTab === tabId) {
-            switchToTab(tabs[0].id);
-        }
-
+        switchToTab(tabs[0].id);
         updateTabNumbers();
     }
 }
 
+// Update tab numbers after a tab is closed
 function updateTabNumbers() {
-    let tabElements = document.querySelectorAll('.tab');
-    tabElements.forEach((tab, index) => {
+    document.querySelectorAll('.tab').forEach((tab, index) => {
         tab.textContent = `Tab ${index + 1}`;
         tab.dataset.tab = index + 1;
         tabs[index].id = index + 1;
     });
 }
 
+// Reset the editor to its initial state
 function startOver() {
-    tabs = [{
-        id: 1,
-        content: initialContent
-    }];
+    tabs = [{ id: 1, content: initialContent }];
     currentTab = 1;
-
     tabContainer.innerHTML = '<button class="tab active" data-tab="1">Tab 1 <span class="tab-close">&times;</span></button>';
     tabContainer.appendChild(addTabBtn);
-
     editor.setValue(tabs[0].content, -1);
     runCode();
 }
 
 function startFromScratch() {
+    // Reset the tabs array with a new, blank tab
     tabs = [{
         id: 1,
         content: '<!-- Start your code here -->'
     }];
+
+    // Reset the current tab to the first one
     currentTab = 1;
 
-    tabContainer.innerHTML = '<button class="tab active" data-tab="1">Tab 1 <span class="tab-close">&times;</span></button>';
-    tabContainer.appendChild(addTabBtn);
+    // Update the tab container UI
+    tabContainer.innerHTML = `
+        <button class="tab active" data-tab="1">Tab 1 <span class="tab-close">&times;</span></button>
+        <button id="addTabBtn">+</button>
+    `;
 
+    // Re-assign the event listener to the new Add Tab button
+    const newAddTabBtn = document.getElementById('addTabBtn');
+    newAddTabBtn.addEventListener('click', addNewTab);
+
+    // Set the editor content to the new blank template
     editor.setValue(tabs[0].content, -1);
+
+    // Run the code (which will clear the preview since it's empty)
     runCode();
 }
 
+
+// Toggle full screen for preview
 function toggleFullScreen() {
     if (!document.fullscreenElement) {
+        preview.requestFullscreen().catch(err => console.error(`Error: ${err.message}`));
         preview.classList.add('fullscreen-preview');
-        preview.requestFullscreen().catch(err => {
-            console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-        });
-    }
-    
-    else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        }
+    } else {
+        document.exitFullscreen();
     }
 }
 
-let focusModeBtn = document.getElementById('focusModeBtn');
-let body = document.body;
-
-focusModeBtn.addEventListener('click', toggleFocusMode);
-
+// Focus mode toggle
 function toggleFocusMode() {
-    body.classList.toggle('focus-mode');
+    document.body.classList.toggle('focus-mode');
     editor.resize();
 }
 
-let isFullFocus = false;
-
-focusModeBtn.addEventListener('click', () => {
-    isFullFocus = !isFullFocus;
-
-    if (isFullFocus) {
-        enterFullFocusMode();
-        focusModeBtn.innerText = 'Exit Full Focus Mode';
-    } else {
-        exitFullFocusMode();
-        focusModeBtn.innerText = 'Full Focus Mode';
-    }
-});
-
-function enterFullFocusMode() {
-    document.getElementById('header')   .style.display = 'none';
-    document.getElementById('titles')   .style.display = 'none';  
-    document.getElementById('controls') .style.display = 'block';
-    document.getElementById('editor')   .style.height  = '100vh';
-    document.getElementById('preview')  .style.height  = '100vh';
+// Full focus mode toggle logic
+function toggleFullFocus() {
+    const isFullFocus = document.body.classList.toggle('focus-mode');
+    focusModeBtn.innerText = isFullFocus ? 'Exit Full Focus Mode' : 'Full Focus Mode';
 }
 
-function exitFullFocusMode() {
-
-    document.getElementById('header') .style.display = 'block'; 
-    document.getElementById('titles') .style.display = 'block'; 
-    document.getElementById('editor') .style.height  = ''; 
-    document.getElementById('preview').style.height  = ''; 
-}
-
-
+// Download the code
 function downloadCode() {
-    let code  = editor.getValue();
-    let blob  = new Blob([code], { type: 'text/html' });
-    let link  = document.createElement('a');
+    const code = editor.getValue();
+    const blob = new Blob([code], { type: 'text/html' });
+    const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = 'your_code.html';
     link.click();
     URL.revokeObjectURL(link.href);
 }
 
-function myFunction() {
-    let element = document.body;
-    element.classList.toggle("dark");
+// Dark mode toggle
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
 }
 
-const toggleDarkMode = () => {
-    document.body.classList.toggle('dark-mode');
-
-    const isDarkMode = document.body.classList.contains('dark-mode');
-    localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
-};
-
-window.addEventListener('DOMContentLoaded', () => {
-    const darkModePreference = localStorage.getItem('darkMode');
-    if (darkModePreference === 'enabled') {
-        document.body.classList.add('dark-mode');
+// Background color functionality
+function handleBackgroundColor() {
+    const savedColor = localStorage.getItem('backgroundColor');
+    if (savedColor) {
+        document.body.style.backgroundColor = savedColor;
+        bgColorPicker.value = savedColor;
     }
+}
+
+bgColorPicker.addEventListener('input', event => {
+    const color = event.target.value;
+    document.body.style.backgroundColor = color;
+    localStorage.setItem('backgroundColor', color);
 });
 
-document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
+resetColorBtn.addEventListener('click', () => {
+    document.body.style.backgroundColor = '';
+    localStorage.removeItem('backgroundColor');
+});
 
+// Event Listeners
+runBtn.addEventListener('click', runCode);
+addTabBtn.addEventListener('click', addNewTab);
+startOverBtn.addEventListener('click', startOver);
+startFromScratchBtn.addEventListener('click', startFromScratch);
+fullScreenBtn.addEventListener('click', toggleFullScreen);
+tabContainer.addEventListener('click', handleTabClick);
+downloadBtn.addEventListener('click', downloadCode);
+focusModeBtn.addEventListener('click', toggleFullFocus);
+darkModeToggle.addEventListener('click', toggleDarkMode);
+
+// Load saved settings
+window.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+    }
+    handleBackgroundColor();
+    runCode();
+});
+
+// Handle full-screen changes
 document.addEventListener('fullscreenchange', () => {
     if (!document.fullscreenElement) {
         preview.classList.remove('fullscreen-preview');
     }
 });
 
-const bgColorPicker = document.getElementById('bgColorPicker');
-const resetColorBtn = document.getElementById('resetColorBtn');
-
-window.addEventListener('DOMContentLoaded', () => {
-    const savedColor = localStorage.getItem('backgroundColor');
-    if (savedColor) {
-        document.body.style.backgroundColor = savedColor;
-        bgColorPicker.value = savedColor;
-    }
-});
-
-bgColorPicker.addEventListener('input', (event) => {
-    const color = event.target.value;
-    document.body.style.backgroundColor = color;
-    localStorage.setItem('backgroundColor', color); 
-});
-
-// Reset button functionality
-resetColorBtn.addEventListener('click', () => {
-    document.body.style.backgroundColor = '';
-    localStorage.removeItem('backgroundColor');
-});
-
-
+// Initialize the editor with the first tab content
 editor.setValue(tabs[0].content, -1);
-runCode();

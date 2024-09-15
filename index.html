@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Code Editor</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>    <!-- Code editing functionality -->
     <link rel="icon" type="png" href="/images_Folder/icon.png">
 </head>
 
 <body>
+
+    <!-- Header for Home, Github Repo, How to Use, Code Example, and Dark mode -->
     <header>
         <div class="header-content">
             <h1>Interactive Code Editor</h1>
@@ -28,26 +30,31 @@
             HTML, CSS & JavaScript Editor
         </h1>
 
+        <!-- My Github profile -->
         <a href="https://github.com/CyberSphinxxx" id="creator_name_link" target="_blank">
             <p id="creator_name" style="margin: 0;">
                 By: John Lemar L. Gonzales
             </p>
         </a>
 
+
+        <!-- Tab navigation for managing multiple code files -->
         <div class="tab-container" id="tabContainer">
             <button class="tab active" data-tab="1">
                 Tab 1 
                 <span class="tab-close">&times;</span>
             </button>
             
-            <button id="addTabBtn">+</button>
+            <button id="addTabBtn">+</button>   <!-- Button to add new tabs for additional code files -->
         </div>
 
+        <!-- Code editor and preview output container -->
         <div class="editor-container">
-            <div id="editor"></div>
-            <iframe id="preview"></iframe>
+            <div id="editor"></div>         <!-- Code editor area -->
+            <iframe id="preview"></iframe>  <!-- Live preview of the code -->
         </div>
 
+        <!--Buttons Controls -->
         <div class="button-container">
             <button id="runBtn">                Run Code            </button>
             <button id="startOverBtn">          Start Over          </button>
@@ -58,13 +65,14 @@
         </div>
     </div>
 
+    <!-- For background color picker -->
     <div class="theme-picker">
         <label for="bgColorPicker">Choose Background Color:</label>
         <input type="color" id="bgColorPicker" name="bgColorPicker">
         <button id="resetColorBtn">Reset Background</button>
     </div>
     
-
+    <!-- Javascript link -->
     <script src="script.js"></script>
 
 </body>
