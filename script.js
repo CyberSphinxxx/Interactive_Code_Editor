@@ -85,18 +85,18 @@ let initialContent =
 let tabs = [{ id: 1, content: initialContent }];
 let currentTab = 1;
 
-const preview = document.getElementById('preview');
-const runBtn = document.getElementById('runBtn');
-const addTabBtn = document.getElementById('addTabBtn');
-const startOverBtn = document.getElementById('startOverBtn');
-const startFromScratchBtn = document.getElementById('startFromScratchBtn');
-const fullScreenBtn = document.getElementById('fullScreenBtn');
-const tabContainer = document.getElementById('tabContainer');
-const downloadBtn = document.getElementById('downloadBtn');
-const focusModeBtn = document.getElementById('focusModeBtn');
-const darkModeToggle = document.getElementById('darkModeToggle');
-const bgColorPicker = document.getElementById('bgColorPicker');
-const resetColorBtn = document.getElementById('resetColorBtn');
+const preview               = document.getElementById('preview');
+const runBtn                = document.getElementById('runBtn');
+const addTabBtn             = document.getElementById('addTabBtn');
+const startOverBtn          = document.getElementById('startOverBtn');
+const startFromScratchBtn   = document.getElementById('startFromScratchBtn');
+const fullScreenBtn         = document.getElementById('fullScreenBtn');
+const tabContainer          = document.getElementById('tabContainer');
+const downloadBtn           = document.getElementById('downloadBtn');
+const focusModeBtn          = document.getElementById('focusModeBtn');
+const darkModeToggle        = document.getElementById('darkModeToggle');
+const bgColorPicker         = document.getElementById('bgColorPicker');
+const resetColorBtn         = document.getElementById('resetColorBtn');
 
 // Function to run the code
 function runCode() {
@@ -152,20 +152,42 @@ function handleTabClick(event) {
 // Close a tab
 function closeTab(tabElement) {
     const tabId = parseInt(tabElement.dataset.tab);
+
+    // Ensure there's at least one tab left before closing
     if (tabs.length > 1) {
+        // Remove the tab from the array
         tabs = tabs.filter(tab => tab.id !== tabId);
+
+        // Remove the tab element from the DOM
         tabElement.remove();
-        switchToTab(tabs[0].id);
+
+        // Switch to the first tab after removing the current one
+        if (currentTab === tabId) {
+            switchToTab(tabs[0].id);
+        }
+
+        // Update the tab numbering after a tab is closed
         updateTabNumbers();
     }
 }
 
-// Update tab numbers after a tab is closed
+// Update tab numbers after closing a tab
 function updateTabNumbers() {
-    document.querySelectorAll('.tab').forEach((tab, index) => {
+    const tabElements = document.querySelectorAll('.tab');
+    tabElements.forEach((tab, index) => {
         tab.textContent = `Tab ${index + 1}`;
         tab.dataset.tab = index + 1;
         tabs[index].id = index + 1;
+
+        // Re-add the close button to each tab after renumbering
+        const closeButton = document.createElement('span');
+        closeButton.classList.add('tab-close');
+        closeButton.innerHTML = '&times;';
+        closeButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Stop event bubbling
+            closeTab(tab);
+        });
+        tab.appendChild(closeButton);
     });
 }
 
@@ -267,15 +289,15 @@ resetColorBtn.addEventListener('click', () => {
 });
 
 // Event Listeners
-runBtn.addEventListener('click', runCode);
-addTabBtn.addEventListener('click', addNewTab);
-startOverBtn.addEventListener('click', startOver);
+runBtn.addEventListener             ('click', runCode);
+addTabBtn.addEventListener          ('click', addNewTab);
+startOverBtn.addEventListener       ('click', startOver);
 startFromScratchBtn.addEventListener('click', startFromScratch);
-fullScreenBtn.addEventListener('click', toggleFullScreen);
-tabContainer.addEventListener('click', handleTabClick);
-downloadBtn.addEventListener('click', downloadCode);
-focusModeBtn.addEventListener('click', toggleFullFocus);
-darkModeToggle.addEventListener('click', toggleDarkMode);
+fullScreenBtn.addEventListener      ('click', toggleFullScreen);
+tabContainer.addEventListener       ('click', handleTabClick);
+downloadBtn.addEventListener        ('click', downloadCode);
+focusModeBtn.addEventListener       ('click', toggleFullFocus);
+darkModeToggle.addEventListener     ('click', toggleDarkMode);
 
 // Load saved settings
 window.addEventListener('DOMContentLoaded', () => {
