@@ -104,10 +104,13 @@ h1 {
 
 .tab-close {
     margin-left: 10px;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
 }
-
+.tab-close:hover {
+    color: rgb(255, 34, 34) !important; /* close button will highlight red on hover */
+    font-size: 20px; /* close button will grow a bit on hover */
+}
 /* Code editor and preview container */
 .editor-container {
     display: flex;
@@ -144,7 +147,8 @@ h1 {
 }
 
 #addTabBtn:hover {
-    background-color: #94e2d5;
+    background-color: #94e2d5;  /* add tab button transition color */
+    color: rgb(0, 0, 0);        /* + icon will turn black on hover */
 }
 
 #startOverBtn, #startFromScratchBtn {
