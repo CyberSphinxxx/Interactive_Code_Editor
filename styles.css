@@ -176,7 +176,8 @@ h1 {
     padding: 10px 20px;
     border-radius: 5px;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 0px;
+    margin-bottom: 20px;
 }
 
 #creator_name_link:hover {
