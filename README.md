@@ -36,21 +36,21 @@ Make sure you have a modern web browser installed. No server or additional setup
 
 ### Steps
 
-1. Fork the repository:
+**1. Fork the repository:**
 Go to the repository on GitHub, click the "Fork" button at the top right of the page to create a copy of the repository under your own account.
 
-2. Clone the repository (from your forked version):
+**2. Clone the repository (from your forked version):**
 
    ```bash
    git clone https://github.com/yourusername/interactive-code-editor.git
    ```
 
-3. Navigate to the project directory:
+**3. Navigate to the project directory:**
    ```bash
    cd interactive-code-editor
    ```
 
-4. Open the index.html file in your browser:
+**4. Open the index.html file in your browser:**
    ```bash
    open index.html
    ```
