@@ -122,7 +122,23 @@ function updateTabsUI() {
 // Add a new tab
 function addNewTab() {
     const newTabId = tabs.length + 1;
-    tabs.push({ id: newTabId, content: `<!-- Tab ${newTabId} Content -->` });
+    tabs.push({ id: newTabId, content:
+
+`<!-- Tab ${newTabId} Content -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab ${newTabId}</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+`});
+
+
     const newTab = createTabElement(newTabId);
     tabContainer.insertBefore(newTab, addTabBtn);
     switchToTab(newTabId);

@@ -116,8 +116,11 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Main Code Editor and Preview */
+#preview {
+    background-color: #282c34; /* Fixed background color for the editor even when you add new tab */
+}
 
+/* Main Code Editor and Preview */
 #editor, #preview {
     flex: 1;
     height: 100%;
