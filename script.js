@@ -333,3 +333,11 @@ document.addEventListener('fullscreenchange', () => {
 
 // Initialize the editor with the first tab content
 editor.setValue(tabs[0].content, -1);
+
+// Alerts the user when you try to leave
+window.addEventListener('beforeunload', function (e) {
+    const confirmationMessage = "The changes you made may not be saved.";
+    e.preventDefault();
+    e.returnValue = confirmationMessage;
+    return confirmationMessage
+});
