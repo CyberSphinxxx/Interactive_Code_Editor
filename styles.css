@@ -169,15 +169,15 @@ h1 {
 
 /* My name link button */
 #creator_name_link {
-    font-size: 10px;
+    font-size: 15px;
     text-decoration: none;
     color: white;
     background-color: #424242;
-    padding: 10px 20px;
+    padding: 5px 5px;
     border-radius: 5px;
     display: inline-block;
     margin-top: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #creator_name_link:hover {
